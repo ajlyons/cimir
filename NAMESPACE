@@ -20,38 +20,48 @@ export(is_key_set)
 export(remove_key)
 export(set_key)
 export(to_datetime)
-importFrom(curl,curl_fetch_memory)
-importFrom(curl,handle_setheaders)
-importFrom(curl,handle_setopt)
-importFrom(curl,new_handle)
-importFrom(curl,parse_headers)
-importFrom(dplyr,across)
-importFrom(dplyr,as_tibble)
-importFrom(dplyr,bind_rows)
-importFrom(dplyr,case_when)
-importFrom(dplyr,filter)
-importFrom(dplyr,if_else)
-importFrom(dplyr,matches)
-importFrom(dplyr,mutate)
-importFrom(dplyr,mutate_at)
-importFrom(dplyr,n)
-importFrom(dplyr,rename)
-importFrom(dplyr,select)
-importFrom(dplyr,setdiff)
-importFrom(dplyr,tibble)
+importFrom(curl,
+  curl_fetch_memory,
+  handle_setheaders,
+  handle_setopt,
+  new_handle,
+  parse_headers
+)
+importFrom(dplyr,
+  across,
+  as_tibble,
+  bind_rows,
+  case_when,
+  filter,
+  if_else,
+  matches,
+  mutate,
+  mutate_at,
+  n,
+  rename,
+  select,
+  setdiff,
+  tibble
+)
 importFrom(glue,glue)
 importFrom(jsonlite,fromJSON)
-importFrom(purrr,map)
-importFrom(purrr,map_dfr)
-importFrom(purrr,modify_if)
+importFrom(purrr,
+  map,
+  map_dfr,
+  modify_if
+)
 importFrom(rlang,.data)
-importFrom(stringr,str_c)
-importFrom(stringr,str_detect)
-importFrom(stringr,str_replace)
-importFrom(stringr,str_replace_all)
-importFrom(stringr,str_split)
-importFrom(stringr,str_to_title)
-importFrom(stringr,str_to_upper)
+importFrom(stringr,
+  str_c,
+  str_detect,
+  str_replace,
+  str_replace_all,
+  str_split,
+  str_to_title,
+  str_to_upper
+)
 importFrom(tidyr,unnest)
-importFrom(utils,head)
-importFrom(utils,tail)
+importFrom(utils,
+  head,
+  tail
+)

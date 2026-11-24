@@ -244,6 +244,8 @@ ModelManifest.xml
 /vignettes/compare.html
 /vignettes/compare_files/figure-html
 .Rproj.user
+*.Rproj
 
 CRAN-RELEASE
 docs
+.Rhistory

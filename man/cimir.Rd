@@ -2,8 +2,8 @@
 % Please edit documentation in R/package.r
 \docType{package}
 \name{cimir}
-\alias{cimir}
 \alias{cimir-package}
+\alias{cimir}
 \title{cimir: Interface to CIMIS}
 \description{
 This package provides an R interface to the
@@ -37,5 +37,10 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Michael Koohafkan \email{michael.koohafkan@gmail.com}
+
+Authors:
+\itemize{
+  \item Michael Koohafkan \email{michael.koohafkan@gmail.com}
+}
 
 }

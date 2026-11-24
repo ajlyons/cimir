@@ -9,6 +9,7 @@ cimis_data(
   start.date,
   end.date,
   items,
+  hourly.data = FALSE,
   measure.unit = c("E", "M"),
   prioritize.SCS = TRUE
 )
@@ -42,6 +43,9 @@ day-precip, day-sol-rad-avg, day-vap-pres-avg, day-air-tmp-max,
 day-air-tmp-min, day-air-tmp-avg, day-rel-hum-max,
 day-rel-hum-min, day-rel-hum-avg, day-dew-pnt, day-wind-spd-avg,
 day-wind-run, day-soil-tmp-avg.}
+
+\item{hourly.data}{\code{TRUE} or \code{FALSE} specifies if querying hourly
+or daily data are being return. The items parameter must match.}
 
 \item{measure.unit}{The unit of measure may be either \code{"E"} for
 English units or \code{"M"} for metric units. The value of this

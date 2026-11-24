@@ -8,14 +8,6 @@ default.items = c("day-asce-eto", "day-precip", "day-sol-rad-avg",
   "day-rel-hum-avg", "day-dew-pnt", "day-wind-spd-avg",
   "day-wind-run", "day-soil-tmp-avg")
 
-#' dataitems
-#'
-#' A tibble of data items and their names, classes, and providers.
-#' @docType data
-#' @keywords internal
-"dataitems"
-
-
 #' CIMIS Data Items
 #'
 #' List CIMIS data items.
@@ -84,7 +76,7 @@ cimis_flags = function(type = c("Severe", "Informative"),
 #'   day-air-tmp-min, day-air-tmp-avg, day-rel-hum-max,
 #'   day-rel-hum-min, day-rel-hum-avg, day-dew-pnt, day-wind-spd-avg,
 #'   day-wind-run, day-soil-tmp-avg.
-#' @param hourly.data `TRUE` or `FALSE` specifies if querying hourly 
+#' @param hourly.data `TRUE` or `FALSE` specifies if querying hourly
 #'   or daily data are being return. The items parameter must match.
 #' @param start.date Specifies the start date. The data format is
 #'   `"yyyy-mm-dd"`.
@@ -220,15 +212,22 @@ cimis_zipcode = function(zipcode) {
 basic_query = function(url) {
   if (!is_key_set())
     stop("No API key available. Specify key with \"set_key()\".")
+
   result = curl_fetch_memory(url, handle = cimir_handle())
+
   if (result$status_code != 200L)
     stop("CIMIS query failed with status ",
       parse_headers(result$headers)[1], "\n",
-      parse(text = rawToChar(result$content)), "\n",
+      # The following expression returned an error because result$content was a JSON string
+      # parse(text = rawToChar(result$content)), "\n",
+      ## The following converts result$content to a message for stop()
+      paste(unlist(fromJSON(rawToChar(result$content)), recursive = TRUE), collapse = "\n"), "\n",
       "URL request: ", result$url,
       call. = FALSE)
+
   value = rawToChar(result$content)
   Encoding(value) = "UTF-8"
+
   # check if request was rejected
   if (str_detect(value, "Request Rejected")) {
     stop("The CIMIS API returned an error. ",
@@ -236,6 +235,15 @@ basic_query = function(url) {
       "\n", "CIMIS error message:", "\n",
       value, call. = FALSE)
   }
+
+  # check if an SSL connection could not be established
+  if (str_detect(value, "The SSL connection could not be established")) {
+    stop("The CIMIS API returned an error. It says a SSL connection could not be established. ",
+         "Try again later. \n",
+         "CIMIS error message:", "\n",
+         value, call. = FALSE)
+  }
+
   fromJSON(
     str_replace_all(value, c(":null" = ":[null]",
       ":\\[\\]" = ":\\[\\[\\]\\]")),

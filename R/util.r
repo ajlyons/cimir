@@ -191,7 +191,7 @@ date_seq = function(start.date, end.date, max.length, multiplier) {
 #' cimis_compass_to_degrees("day-wind-nne")
 #' cimis_compass_to_degrees(c("SSE", "SSW", "wsw", "Wnw", "nnw"))
 #'
-#' @seealso [cimis_degrees_to_compass()]
+#' @seealso \code{\link{cimis_degrees_to_compass}}
 #'
 #' @importFrom dplyr case_when
 #' @importFrom stringr str_to_upper str_detect
@@ -230,7 +230,7 @@ cimis_compass_to_degrees = function(x) {
 #' cimis_degrees_to_compass(cimis_compass_to_degrees(c("NNE", "ENE",
 #'   "ESE", "SSE", "SSW", "WSW", "WNW", "NNW")))
 #'
-#' @seealso [cimis_compass_to_degrees()]
+#' @seealso \code{\link{cimis_compass_to_degrees}}
 #' @export
 cimis_degrees_to_compass = function(x) {
   breaks = c(0, 45, 90, 135, 180, 225, 270, 315, 360)

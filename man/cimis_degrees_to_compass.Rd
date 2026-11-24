@@ -27,5 +27,5 @@ cimis_degrees_to_compass(cimis_compass_to_degrees(c("NNE", "ENE",
 
 }
 \seealso{
-\code{\link[=cimis_compass_to_degrees]{cimis_compass_to_degrees()}}
+\code{\link{cimis_compass_to_degrees}}
 }

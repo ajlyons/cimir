@@ -1,7 +1,7 @@
 ---
 title: "Helper Functions"
 author: "Michael Koohafkan"
-date: "2021-02-17"
+date: "2026-11-23"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Helper Functions}
@@ -16,7 +16,7 @@ This document gets illustrates some of the helper functions in `cimir `.
 First, simply load the `cimir` library:
 
 
-```r
+``` r
 library(cimir)
 ```
 
@@ -25,16 +25,20 @@ Markleeville station (#246). The station metadata can be
 retrieved with `cimis_station()`:
 
 
-```r
+``` r
 station.meta = cimis_station(246)
 print(station.meta)
 ```
 
 
-|StationNbr |Name         |City         |RegionalOffice              |County |ConnectDate |DisconnectDate |IsActive |IsEtoStation |Elevation |GroundCover |HmsLatitude           |HmsLongitude              |ZipCodes |SitingDesc |
-|:----------|:------------|:------------|:---------------------------|:------|:-----------|:--------------|:--------|:------------|:---------|:-----------|:---------------------|:-------------------------|:--------|:----------|
-|246        |Markleeville |Markleeville |North Central Region Office |Alpine |6/13/2014   |12/31/2050     |True     |True         |5517      |Grass       |38º46'24N / 38.773409 |-119º47'31W / -119.791930 |96120    |           |
-|246        |Markleeville |Markleeville |North Central Region Office |Alpine |6/13/2014   |12/31/2050     |True     |True         |5517      |Grass       |38º46'24N / 38.773409 |-119º47'31W / -119.791930 |96133    |           |
+```
+#> Error in `map()` at cimir/R/query.r:159:3:
+#> ℹ In index: 1.
+#> Caused by error in `.f()`:
+#> ! No API key available. Specify key with "set_key()".
+#> Error:
+#> ! object 'station.meta' not found
+```
 
 Notice that the station latitude and longitude is provided as a text
 string, in both Hour Minute Second (HMMS) and Decimal Degree (DD) 
@@ -42,36 +46,36 @@ format. We can extract one or the other of these formats using
 `cimis_format_location()`:
 
 
-```r
+``` r
 station.meta = cimis_format_location(station.meta, "DD")
 head(station.meta)
 ```
 
 
-|StationNbr |Name         |City         |RegionalOffice              |County |ConnectDate |DisconnectDate |IsActive |IsEtoStation |Elevation |GroundCover | Latitude| Longitude|ZipCodes |SitingDesc |
-|:----------|:------------|:------------|:---------------------------|:------|:-----------|:--------------|:--------|:------------|:---------|:-----------|--------:|---------:|:--------|:----------|
-|246        |Markleeville |Markleeville |North Central Region Office |Alpine |6/13/2014   |12/31/2050     |True     |True         |5517      |Grass       | 38.77341| -119.7919|96120    |           |
-|246        |Markleeville |Markleeville |North Central Region Office |Alpine |6/13/2014   |12/31/2050     |True     |True         |5517      |Grass       | 38.77341| -119.7919|96133    |           |
+```
+#> Error:
+#> ! object 'station.meta' not found
+#> Error:
+#> ! object 'station.meta' not found
+```
 
 Now let's retrieve some data with `cimis_data()`:
 
 
 
-```r
+``` r
 station.data = cimis_data(246, "2017-04-01", "2017-04-30",
   c("day-air-tmp-avg", "hly-air-tmp"))
 head(station.data)
 ```
 
 
-|Name  |Type    |Owner        |Date       | Julian|Station |Standard |ZipCodes     |Scope |Item         | Value|Qc |Unit |Hour |
-|:-----|:-------|:------------|:----------|------:|:-------|:--------|:------------|:-----|:------------|-----:|:--|:----|:----|
-|cimis |station |water.ca.gov |2017-04-01 |     91|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  42.8|   |(F)  |NA   |
-|cimis |station |water.ca.gov |2017-04-02 |     92|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  45.7|   |(F)  |NA   |
-|cimis |station |water.ca.gov |2017-04-03 |     93|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  41.1|   |(F)  |NA   |
-|cimis |station |water.ca.gov |2017-04-04 |     94|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  47.0|   |(F)  |NA   |
-|cimis |station |water.ca.gov |2017-04-05 |     95|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  52.4|   |(F)  |NA   |
-|cimis |station |water.ca.gov |2017-04-06 |     96|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  48.9|   |(F)  |NA   |
+```
+#> Error in `basic_query()`:
+#> ! No API key available. Specify key with "set_key()".
+#> Error:
+#> ! object 'station.data' not found
+```
 
 Notice that hourly data returns timestamps in two columns "Date" and 
 "Hour". Furthermore, since we requested both a daily item and an hourly 
@@ -80,20 +84,18 @@ can collapse these columns into a single datetime column using
 `cimis_to_datetime()`:
 
 
-```r
+``` r
 station.data = cimis_to_datetime(station.data)
 head(station.data)
 ```
 
 
-|Name  |Type    |Owner        |Datetime            | Julian|Station |Standard |ZipCodes     |Scope |Item         | Value|Qc |Unit |
-|:-----|:-------|:------------|:-------------------|------:|:-------|:--------|:------------|:-----|:------------|-----:|:--|:----|
-|cimis |station |water.ca.gov |2017-04-01 00:00:00 |     91|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  42.8|   |(F)  |
-|cimis |station |water.ca.gov |2017-04-02 00:00:00 |     92|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  45.7|   |(F)  |
-|cimis |station |water.ca.gov |2017-04-03 00:00:00 |     93|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  41.1|   |(F)  |
-|cimis |station |water.ca.gov |2017-04-04 00:00:00 |     94|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  47.0|   |(F)  |
-|cimis |station |water.ca.gov |2017-04-05 00:00:00 |     95|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  52.4|   |(F)  |
-|cimis |station |water.ca.gov |2017-04-06 00:00:00 |     96|246     |english  |96120, 96133 |daily |DayAirTmpAvg |  48.9|   |(F)  |
+```
+#> Error:
+#> ! object 'station.data' not found
+#> Error:
+#> ! object 'station.data' not found
+```
 
 Note that a time of `00:00:00` is used for daily records.
 
@@ -102,11 +104,11 @@ of records you can query at once. Large queries can be split
 automatically into a series of smaller queries using `cimis_split_queries`:
 
 
-```r
+``` r
 queries = cimis_split_query(247, "2017-04-01", "2018-04-30",
   c("day-air-tmp-avg", "hly-air-tmp"))
 queries
-#> # A tibble: 7 x 4
+#> # A tibble: 7 × 4
 #>   start.date end.date   items     targets  
 #>   <date>     <date>     <list>    <list>   
 #> 1 2017-04-01 2018-04-30 <chr [1]> <dbl [1]>
@@ -122,7 +124,7 @@ The queries can then be run in sequence using e.g. `mapply()` or
 `purrr::pmap()`:
 
 
-```r
+``` r
 purrr::pmap_dfr(queries, cimis_data)
 ```
 

@@ -1,3 +1,21 @@
+# cimir 0.4.2 (2026-11-23)
+
+Updates by @ajlyons
+
+Merged pull request #6 (https://github.com/mkoohafkan/cimir/pull/6) by @cbuelo with contained changes required to make CIMIR work with the changes to the CIMIS API in June 2026.
+
+Updated dataitems.xlsx to conform to the supported data items in the [CIMIS API](https://cimis.water.ca.gov/web-api/rest-api/latest#section_dataRequests)
+
+Removed 'CIMIS ETo' (`day-eto`) from both the daily and hourly variables, as these have been removed in the CIMIS API. Instead use `day-asce-eto` or `hly-asce-eto`.
+
+Updated the dataitems and dataflags internal data objects.
+
+Added `readxl` and `usethis` to Suggests (because they're required to regenerate the data files)
+
+Fixed broken links in documentation
+
+Modified `basic_query()` to repair and improve code that traps and reports API errors.
+
 # cimir 0.4-1 (2021-02-17)
 
 This patch provides better handling of queries

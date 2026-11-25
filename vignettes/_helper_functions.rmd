@@ -56,23 +56,21 @@ knitr::kable(head(station.meta))
 
 Now let's retrieve some data with `cimis_data()`:
 
-
 ```{r eval = FALSE}
 station.data = cimis_data(246, "2017-04-01", "2017-04-30",
-  c("day-air-tmp-avg", "hly-air-tmp"))
+  c("hly-dew-pnt", "hly-air-tmp"), hourly.data = TRUE)
 head(station.data)
 ```
 
 ```{r echo = FALSE, results = "markup"}
 station.data = cimis_data(246, "2017-04-01", "2017-04-30",
-  c("day-air-tmp-avg", "hly-air-tmp"))
+  c("hly-dew-pnt", "hly-air-tmp"), hourly.data = TRUE)
 knitr::kable(head(station.data))
 ```
 
 Notice that hourly data returns timestamps in two columns "Date" and 
-"Hour". Furthermore, since we requested both a daily item and an hourly 
-item, the daily item records have `NA` values for the "Hour" column. We 
-can collapse these columns into a single datetime column using 
+"Hour". We can collapse these columns into a single datetime column using 
+
 `cimis_to_datetime()`:
 
 ```{r eval = FALSE}
@@ -81,19 +79,20 @@ head(station.data)
 ```
 
 ```{r echo = FALSE, results = "markup"}
-station.data = cimis_to_datetime(station.data)
-knitr::kable(head(mutate(station.data, Datetime = paste(Datetime))))
+## THIS DOES NOT WORK ANY MORE
+# station.data = cimis_to_datetime(station.data)
+# knitr::kable(head(mutate(station.data, Datetime = paste(Datetime))))
 ```
 
 Note that a time of `00:00:00` is used for daily records.
 
 The CIMIS Web API has fairly conservative limitations on the number
 of records you can query at once. Large queries can be split 
-automatically into a series of smaller queries using `cimis_split_queries`:
+automatically into a series of smaller queries using `cimis_split_query`:
 
 ```{r}
-queries = cimis_split_query(247, "2017-04-01", "2018-04-30",
-  c("day-air-tmp-avg", "hly-air-tmp"))
+queries = cimis_split_query(targets = 247, start.date = "2017-04-01", end.date = "2017-06-30", 
+                            items = c("hly-air-tmp", "hly-precip"), hourly.data = TRUE)
 queries
 ```
 

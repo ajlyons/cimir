@@ -93,8 +93,12 @@ Note that when mixed daily and hourly data is present in the dataframe,
 the daily values are assumed to correspond to midnight (00:00).
 
 ```{r}
+## SORRY - YOU CAN NOT MIX HOURLY AND DAILY ITEMS ANY MORE
+# cimis_to_datetime(cimis_data(targets = 170, start.date = "2018-09-25",
+#   end.date = "2018-09-27", items = c("hly-soil-tmp", "day-air-tmp-avg")))
+
 cimis_to_datetime(cimis_data(targets = 170, start.date = "2018-09-25",
-  end.date = "2018-09-27", items = c("hly-soil-tmp", "day-air-tmp-avg")))
+  end.date = "2018-09-27", items = c("hly-soil-tmp", "hly-dew-pnt"), hourly.data = TRUE))
 ```
 
 CIMIS data sometimes includes quality control flags in the `Qc` column that

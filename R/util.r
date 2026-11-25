@@ -121,7 +121,7 @@ bind_records = function(result) {
 #'   query. The default value is the the maximum data limit allowed by
 #'   the CIMIS Web API (1,750 records).
 #' @return A data frame with columns "targets", "start.date",
-#'   "end.date", and "items".
+#'   "end.date", "items", and "hourly.data".
 #'
 #' @details Queries are not split by `targets` or `items`, i.e. each
 #'   resulting query will include all targets and items.
@@ -133,7 +133,7 @@ bind_records = function(result) {
 #'
 #' @importFrom dplyr tibble n mutate bind_rows
 #' @export
-cimis_split_query = function(targets, start.date, end.date, items,
+cimis_split_query = function(targets, start.date, end.date, items, hourly.data = FALSE,
   max.records = 1750L) {
   hourly.items = intersect(items, cimis_items("Hourly")[["Data Item"]])
   daily.items = intersect(items, cimis_items("Daily")[["Data Item"]])
@@ -152,7 +152,7 @@ cimis_split_query = function(targets, start.date, end.date, items,
     daily.ranges = NULL
   }
   mutate(bind_rows(daily.ranges, hourly.ranges),
-    targets = rep(list(targets), n()))
+    targets = rep(list(targets), n()), hourly.data = hourly.data)
 }
 
 #' @importFrom dplyr tibble

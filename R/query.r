@@ -101,7 +101,7 @@ cimis_flags = function(type = c("Severe", "Informative"),
 #' @importFrom glue glue
 #' @importFrom stringr str_c str_to_upper
 #' @export
-cimis_data = function(targets, start.date, end.date, items,hourly.data = FALSE,
+cimis_data = function(targets, start.date, end.date, items, hourly.data = FALSE,
   measure.unit = c("E", "M"), prioritize.SCS = TRUE) {
   if (any(is.na(suppressWarnings(as.numeric(targets))))) {
     target.sep = ";"

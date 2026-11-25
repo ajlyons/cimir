@@ -18,6 +18,8 @@ Fixed broken ROxygen links in the documentation
 
 `cimis_station()`: Fixed the JSON flattening expression to work with the new CIMIS API
 
+`cimis_split_query()`: Added `hourly.data` argument which is needed to pass to `cimis_data()`
+
 # cimir 0.4-1 (2021-02-17)
 
 This patch provides better handling of queries

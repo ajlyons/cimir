@@ -31,14 +31,28 @@ print(station.meta)
 ```
 
 
-```
-#> Error in `map()` at cimir/R/query.r:161:3:
-#> ℹ In index: 1.
-#> Caused by error in `.f()`:
-#> ! No API key available. Specify key with "set_key()".
-#> Error:
-#> ! object 'station.meta' not found
-```
+
+|StationNbr |Name         |City         |RegionalOffice              |County |ConnectDate |DisconnectDate |IsActive |IsEtoStation |Elevation |GroundCover |HmsLatitude           |HmsLongitude             |ZipCodes    |SitingDesc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|:----------|:------------|:------------|:---------------------------|:------|:-----------|:--------------|:--------|:------------|:---------|:-----------|:---------------------|:------------------------|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|246        |Markleeville |Markleeville |North Central Region Office |Alpine |6/13/2014   |12/31/2050     |True     |True         |5517      |Grass       |38º46'24N / 38.773409 |-119º47'31W / -119.79193 |96133,96120 |DATE: 03-18-2016<br />
+STATION #:&nbsp; 246 <br />
+STATION NAME:&nbsp; Markleeville<br />
+ETO ZONE:&nbsp; 11<br />
+PREVAILING WINDS:&nbsp; South <br />
+LOCAL CHARACTER:&nbsp; The Markleeville Non-ETo CIMIS station is located on South Tahoe Public Utility District land in eastern California about 5 miles north of the City of Markleeville, the Alpine County Seat.&nbsp; This site is east of the Sierra Nevada mountains as Highway 88 (Carson Pass) leaves the mountain hieghts. <br />
+DESCRIPTION OF STATION SITE: This Non-ETo CIMIS Station is located in a large unirrigated pasture south of Diamond Valley Road.&nbsp; The pasture is below Stevens Lake and within the Carson River watershed.&nbsp; <br />
+NORTH: <br />
+250ft: Pasture<br />
+EAST: <br />
+650ft: Pasture<br />
+SOUTH: <br />
+2400ft: Pasture<br />
+WEST:<br />
+550ft: Pasture<br />
+COMMENTS:<br />
+Future improvements to this site, including irrigation to the surrounding pasture (300' in each direction from station equipment) will provide conditions favorable for an ETo station. This is an impressive field site with good wind exposure and will be a valuable resource for the surrounding community.&nbsp; <br /> |
+
+
 
 Notice that the station latitude and longitude is provided as a text
 string, in both Hour Minute Second (HMMS) and Decimal Degree (DD) 
@@ -52,35 +66,54 @@ head(station.meta)
 ```
 
 
-```
-#> Error:
-#> ! object 'station.meta' not found
-#> Error:
-#> ! object 'station.meta' not found
-```
+
+|StationNbr |Name         |City         |RegionalOffice              |County |ConnectDate |DisconnectDate |IsActive |IsEtoStation |Elevation |GroundCover | Latitude| Longitude|ZipCodes    |SitingDesc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|:----------|:------------|:------------|:---------------------------|:------|:-----------|:--------------|:--------|:------------|:---------|:-----------|--------:|---------:|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|246        |Markleeville |Markleeville |North Central Region Office |Alpine |6/13/2014   |12/31/2050     |True     |True         |5517      |Grass       | 38.77341| -119.7919|96133,96120 |DATE: 03-18-2016<br />
+STATION #:&nbsp; 246 <br />
+STATION NAME:&nbsp; Markleeville<br />
+ETO ZONE:&nbsp; 11<br />
+PREVAILING WINDS:&nbsp; South <br />
+LOCAL CHARACTER:&nbsp; The Markleeville Non-ETo CIMIS station is located on South Tahoe Public Utility District land in eastern California about 5 miles north of the City of Markleeville, the Alpine County Seat.&nbsp; This site is east of the Sierra Nevada mountains as Highway 88 (Carson Pass) leaves the mountain hieghts. <br />
+DESCRIPTION OF STATION SITE: This Non-ETo CIMIS Station is located in a large unirrigated pasture south of Diamond Valley Road.&nbsp; The pasture is below Stevens Lake and within the Carson River watershed.&nbsp; <br />
+NORTH: <br />
+250ft: Pasture<br />
+EAST: <br />
+650ft: Pasture<br />
+SOUTH: <br />
+2400ft: Pasture<br />
+WEST:<br />
+550ft: Pasture<br />
+COMMENTS:<br />
+Future improvements to this site, including irrigation to the surrounding pasture (300' in each direction from station equipment) will provide conditions favorable for an ETo station. This is an impressive field site with good wind exposure and will be a valuable resource for the surrounding community.&nbsp; <br /> |
+
+
 
 Now let's retrieve some data with `cimis_data()`:
 
 
-
 ``` r
 station.data = cimis_data(246, "2017-04-01", "2017-04-30",
-  c("day-air-tmp-avg", "hly-air-tmp"))
+  c("hly-dew-pnt", "hly-air-tmp"), hourly.data = TRUE)
 head(station.data)
 ```
 
 
-```
-#> Error in `basic_query()`:
-#> ! No API key available. Specify key with "set_key()".
-#> Error:
-#> ! object 'station.data' not found
-```
+
+|Name  |Type    |Owner        |Date       | Julian|Hour |Station |Standard |ZipCodes     |Scope  |Item      | Value|Qc |Unit |
+|:-----|:-------|:------------|:----------|------:|:----|:-------|:--------|:------------|:------|:---------|-----:|:--|:----|
+|cimis |station |water.ca.gov |2017-04-01 |     91|0100 |246     |english  |96133, 96120 |hourly |HlyAirTmp |  29.8|   |(°F) |
+|cimis |station |water.ca.gov |2017-04-01 |     91|0100 |246     |english  |96133, 96120 |hourly |HlyDewPnt |  26.0|   |(°F) |
+|cimis |station |water.ca.gov |2017-04-01 |     91|0200 |246     |english  |96133, 96120 |hourly |HlyAirTmp |  32.2|   |(°F) |
+|cimis |station |water.ca.gov |2017-04-01 |     91|0200 |246     |english  |96133, 96120 |hourly |HlyDewPnt |  28.0|   |(°F) |
+|cimis |station |water.ca.gov |2017-04-01 |     91|0300 |246     |english  |96133, 96120 |hourly |HlyAirTmp |  29.1|   |(°F) |
+|cimis |station |water.ca.gov |2017-04-01 |     91|0300 |246     |english  |96133, 96120 |hourly |HlyDewPnt |  25.8|   |(°F) |
+
+
 
 Notice that hourly data returns timestamps in two columns "Date" and 
-"Hour". Furthermore, since we requested both a daily item and an hourly 
-item, the daily item records have `NA` values for the "Hour" column. We 
-can collapse these columns into a single datetime column using 
+"Hour". We can collapse these columns into a single datetime column using 
+
 `cimis_to_datetime()`:
 
 
@@ -90,34 +123,24 @@ head(station.data)
 ```
 
 
-```
-#> Error:
-#> ! object 'station.data' not found
-#> Error:
-#> ! object 'station.data' not found
-```
 
 Note that a time of `00:00:00` is used for daily records.
 
 The CIMIS Web API has fairly conservative limitations on the number
 of records you can query at once. Large queries can be split 
-automatically into a series of smaller queries using `cimis_split_queries`:
+automatically into a series of smaller queries using `cimis_split_query`:
 
 
 ``` r
-queries = cimis_split_query(247, "2017-04-01", "2018-04-30",
-  c("day-air-tmp-avg", "hly-air-tmp"))
+queries = cimis_split_query(targets = 247, start.date = "2017-04-01", end.date = "2017-06-30", 
+                            items = c("hly-air-tmp", "hly-precip"), hourly.data = TRUE)
 queries
-#> # A tibble: 7 × 4
-#>   start.date end.date   items     targets  
-#>   <date>     <date>     <list>    <list>   
-#> 1 2017-04-01 2018-04-30 <chr [1]> <dbl [1]>
-#> 2 2017-04-01 2017-06-04 <chr [1]> <dbl [1]>
-#> 3 2017-06-05 2017-08-09 <chr [1]> <dbl [1]>
-#> 4 2017-08-10 2017-10-14 <chr [1]> <dbl [1]>
-#> 5 2017-10-15 2017-12-18 <chr [1]> <dbl [1]>
-#> 6 2017-12-19 2018-02-22 <chr [1]> <dbl [1]>
-#> 7 2018-02-23 2018-04-30 <chr [1]> <dbl [1]>
+#> # A tibble: 3 × 5
+#>   start.date end.date   items     targets   hourly.data
+#>   <date>     <date>     <list>    <list>    <lgl>      
+#> 1 2017-04-01 2017-04-30 <chr [2]> <dbl [1]> TRUE       
+#> 2 2017-05-01 2017-05-30 <chr [2]> <dbl [1]> TRUE       
+#> 3 2017-05-31 2017-06-30 <chr [2]> <dbl [1]> TRUE
 ```
 
 The queries can then be run in sequence using e.g. `mapply()` or 

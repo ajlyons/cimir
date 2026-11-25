@@ -4,7 +4,14 @@
 \alias{cimis_split_query}
 \title{Split CIMIS Query}
 \usage{
-cimis_split_query(targets, start.date, end.date, items, max.records = 1750L)
+cimis_split_query(
+  targets,
+  start.date,
+  end.date,
+  items,
+  hourly.data = FALSE,
+  max.records = 1750L
+)
 }
 \arguments{
 \item{targets}{geographies or weather stations of interest. This
@@ -36,13 +43,16 @@ day-air-tmp-min, day-air-tmp-avg, day-rel-hum-max,
 day-rel-hum-min, day-rel-hum-avg, day-dew-pnt, day-wind-spd-avg,
 day-wind-run, day-soil-tmp-avg.}
 
+\item{hourly.data}{\code{TRUE} or \code{FALSE} specifies if querying hourly
+or daily data are being return. The items parameter must match.}
+
 \item{max.records}{The maximum number of records returned by a
 query. The default value is the the maximum data limit allowed by
 the CIMIS Web API (1,750 records).}
 }
 \value{
 A data frame with columns "targets", "start.date",
-"end.date", and "items".
+"end.date", "items", and "hourly.data".
 }
 \description{
 Split a large CIMIS query into multiple smaller queries based on a

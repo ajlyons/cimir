@@ -1,7 +1,7 @@
 ---
 title: "Helper Functions"
 author: "Michael Koohafkan"
-date: "2026-11-23"
+date: "2026-11-25"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Helper Functions}
@@ -32,7 +32,7 @@ print(station.meta)
 
 
 ```
-#> Error in `map()` at cimir/R/query.r:159:3:
+#> Error in `map()` at cimir/R/query.r:161:3:
 #> ℹ In index: 1.
 #> Caused by error in `.f()`:
 #> ! No API key available. Specify key with "set_key()".

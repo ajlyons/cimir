@@ -113,7 +113,8 @@ cimis_data = function(targets, start.date, end.date, items,hourly.data = FALSE,
   measure.unit = match.arg(str_to_upper(measure.unit), c("E", "M"),
     FALSE)
   isHourly = ifelse(hourly.data, "true", "false") # TODO: add checking for items
-  prioritize.SCS = ifelse(prioritize.SCS, "Y", "N")
+  #prioritize.SCS = ifelse(prioritize.SCS, "Y", "N")
+  prefer = ifelse(prioritize.SCS, "SCS", "WSN")
   start.date = as.Date(start.date)
   end.date = as.Date(end.date)
   # query
@@ -125,7 +126,8 @@ cimis_data = function(targets, start.date, end.date, items,hourly.data = FALSE,
       "dataItems={str_c(items, collapse = ',')}", "&",
       "isHourly={isHourly}", "&",
       "unitOfMeasure={measure.unit}", "&",
-      "prioritizeSCS={prioritize.SCS}"
+      "prefer={prefer}"
+      # "prioritizeSCS={prioritize.SCS}"  deprecated in new API
     )
   )
   bind_records(result)

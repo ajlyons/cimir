@@ -1,20 +1,20 @@
 # cimir 0.4.2 (2026-11-23)
 
-Updates by @ajlyons
+Updates in this version were made in a fork of cimir by [@ajlyons](https://github.com/ajlyons/cimir), as it is unclear if mkoohafkan is still maintaining the package.
 
-Merged pull request #6 (https://github.com/mkoohafkan/cimir/pull/6) by @cbuelo with contained changes required to make CIMIR work with the changes to the CIMIS API in June 2026.
+Merged pull request #6 (https://github.com/mkoohafkan/cimir/pull/6) by @cbuelo containing changes required to make CIMIR work with the overhaul of the [CIMIS API](https://cimis.water.ca.gov/web-api/rest-api/latest) in June 2026.
 
-Updated dataitems.xlsx to conform to the supported data items in the [CIMIS API](https://cimis.water.ca.gov/web-api/rest-api/latest#section_dataRequests)
-
-Removed 'CIMIS ETo' (`day-eto`) from both the daily and hourly variables, as these have been removed in the CIMIS API. Instead use `day-asce-eto` or `hly-asce-eto`.
-
-Updated the dataitems and dataflags internal data objects.
+Removed 'CIMIS ETo' from both the daily and hourly variables in `dataitems.xlsx`, because these have been 
+removed in the [new CIMIS API](https://cimis.water.ca.gov/web-api/rest-api/latest). 
+(Use `day-asce-eto` or `hly-asce-eto` instead). Updated the dataitems and dataflags internal data objects.
 
 Added `readxl` and `usethis` to Suggests (because they're required to regenerate the data files)
 
-Fixed broken links in documentation
+Fixed broken ROxygen links in the documentation 
 
-Modified `basic_query()` to repair and improve code that traps and reports API errors.
+`basic_query()`: Improved code that traps and reports API errors.
+
+`cimis_data()`: Changed the `prioritizeSCS` URL parameter in the legacy API to [`prefer`](https://cimis.water.ca.gov/web-api/rest-api/latest). No change to the function arguments.
 
 # cimir 0.4-1 (2021-02-17)
 

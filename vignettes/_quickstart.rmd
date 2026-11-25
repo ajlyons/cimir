@@ -29,6 +29,7 @@ First, simply load the `cimir` library:
 
 ```{r eval = FALSE}
 library(cimir)
+packageVersion("cimir")
 ```
 
 If you want `cimir` to automatically use an existing AppKey when you attach

@@ -46,6 +46,7 @@ importFrom(dplyr,
 importFrom(glue,glue)
 importFrom(jsonlite,fromJSON)
 importFrom(purrr,
+  list_rbind,
   map,
   map_dfr,
   modify_if

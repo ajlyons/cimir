@@ -49,43 +49,44 @@ cimis_items()
 #> 2    Maximum Air Temperature  day-air-tmp-max  Daily                   WSN
 #> 3    Minimum Air Temperature  day-air-tmp-min  Daily                   WSN
 #> 4                  Dew Point      day-dew-pnt  Daily                   WSN
-#> 5                   ASCE ETo     day-asce-eto  Daily             WSN & SCS
-#> 6                   ASCE ETr     day-asce-etr  Daily                   WSN
-#> 7              Precipitation       day-precip  Daily                   WSN
-#> 8  Average Relative Humidity  day-rel-hum-avg  Daily                   WSN
-#> 9  Maximum Relative Humidity  day-rel-hum-max  Daily                   WSN
-#> 10 Minimum Relative Humidity  day-rel-hum-min  Daily                   WSN
-#> 11  Average Soil Temperature day-soil-tmp-avg  Daily                   WSN
-#> 12  Maximum Soil Temperature day-soil-tmp-max  Daily                   WSN
-#> 13  Minimum Soil Temperature day-soil-tmp-min  Daily                   WSN
-#> 14   Average Solar Radiation  day-sol-rad-avg  Daily             WSN & SCS
-#> 15       Net Solar Radiation  day-sol-rad-net  Daily                   WSN
-#> 16    Average Vapor Pressure day-vap-pres-avg  Daily                   WSN
-#> 17    Maximum Vapor Pressure day-vap-pres-max  Daily                   WSN
-#> 18    Minimum Vapor Pressure day-vap-pres-min  Daily                   WSN
-#> 19      Wind East-North-East     day-wind-ene  Daily                   WSN
-#> 20      Wind East-South-East     day-wind-ese  Daily                   WSN
-#> 21     Wind North-North-East     day-wind-nne  Daily                   WSN
-#> 22     Wind North-North-West     day-wind-nnw  Daily                   WSN
-#> 23                  Wind Run     day-wind-run  Daily                   WSN
-#> 24        Average Wind Speed day-wind-spd-avg  Daily                   WSN
-#> 25     Wind South-South-East     day-wind-sse  Daily                   WSN
-#> 26     Wind South-South-West     day-wind-ssw  Daily                   WSN
-#> 27      Wind West-North-West     day-wind-wnw  Daily                   WSN
-#> 28      Wind West-South-West     day-wind-wsw  Daily                   WSN
-#> 29           Air Temperature      hly-air-tmp Hourly                   WSN
-#> 30                 Dew Point      hly-dew-pnt Hourly                   WSN
-#> 31             Net Radiation      hly-net-rad Hourly                   WSN
-#> 32                  ASCE ETo     hly-asce-eto Hourly                   WSN
-#> 33                  ASCE ETr     hly-asce-etr Hourly                   WSN
-#> 34             Precipitation       hly-precip Hourly                   WSN
-#> 35         Relative Humidity      hly-rel-hum Hourly                   WSN
-#> 36            Resultant Wind     hly-res-wind Hourly                   WSN
-#> 37          Soil Temperature     hly-soil-tmp Hourly                   WSN
-#> 38           Solar Radiation      hly-sol-rad Hourly                   WSN
-#> 39            Vapor Pressure     hly-vap-pres Hourly                   WSN
-#> 40            Wind Direction     hly-wind-dir Hourly                   WSN
-#> 41                Wind Speed     hly-wind-spd Hourly                   WSN
+#> 5                  CIMIS ETo          day-eto  Daily                   WSN
+#> 6                   ASCE ETo     day-asce-eto  Daily             WSN & SCS
+#> 7                   ASCE ETr     day-asce-etr  Daily                   WSN
+#> 8              Precipitation       day-precip  Daily                   WSN
+#> 9  Average Relative Humidity  day-rel-hum-avg  Daily                   WSN
+#> 10 Maximum Relative Humidity  day-rel-hum-max  Daily                   WSN
+#> 11 Minimum Relative Humidity  day-rel-hum-min  Daily                   WSN
+#> 12  Average Soil Temperature day-soil-tmp-avg  Daily                   WSN
+#> 13  Maximum Soil Temperature day-soil-tmp-max  Daily                   WSN
+#> 14  Minimum Soil Temperature day-soil-tmp-min  Daily                   WSN
+#> 15   Average Solar Radiation  day-sol-rad-avg  Daily             WSN & SCS
+#> 16       Net Solar Radiation  day-sol-rad-net  Daily                   WSN
+#> 17    Average Vapor Pressure day-vap-pres-avg  Daily                   WSN
+#> 18    Maximum Vapor Pressure day-vap-pres-max  Daily                   WSN
+#> 19    Minimum Vapor Pressure day-vap-pres-min  Daily                   WSN
+#> 20      Wind East-North-East     day-wind-ene  Daily                   WSN
+#> 21      Wind East-South-East     day-wind-ese  Daily                   WSN
+#> 22     Wind North-North-East     day-wind-nne  Daily                   WSN
+#> 23     Wind North-North-West     day-wind-nnw  Daily                   WSN
+#> 24                  Wind Run     day-wind-run  Daily                   WSN
+#> 25        Average Wind Speed day-wind-spd-avg  Daily                   WSN
+#> 26     Wind South-South-East     day-wind-sse  Daily                   WSN
+#> 27     Wind South-South-West     day-wind-ssw  Daily                   WSN
+#> 28      Wind West-North-West     day-wind-wnw  Daily                   WSN
+#> 29      Wind West-South-West     day-wind-wsw  Daily                   WSN
+#> 30           Air Temperature      hly-air-tmp Hourly                   WSN
+#> 31                 Dew Point      hly-dew-pnt Hourly                   WSN
+#> 32             Net Radiation      hly-net-rad Hourly                   WSN
+#> 33                  ASCE ETo     hly-asce-eto Hourly                   WSN
+#> 34                  ASCE ETr     hly-asce-etr Hourly                   WSN
+#> 35             Precipitation       hly-precip Hourly                   WSN
+#> 36         Relative Humidity      hly-rel-hum Hourly                   WSN
+#> 37            Resultant Wind     hly-res-wind Hourly                   WSN
+#> 38          Soil Temperature     hly-soil-tmp Hourly                   WSN
+#> 39           Solar Radiation      hly-sol-rad Hourly                   WSN
+#> 40            Vapor Pressure     hly-vap-pres Hourly                   WSN
+#> 41            Wind Direction     hly-wind-dir Hourly                   WSN
+#> 42                Wind Speed     hly-wind-spd Hourly                   WSN
 ```
 
 To get a list of station IDs, use  `cimis_station()`:
@@ -93,10 +94,10 @@ To get a list of station IDs, use  `cimis_station()`:
 
 ``` r
 cimis_station()
-#> Error in `map()` at cimir/R/query.r:161:3:
+#> Error in `map()`:
 #> ℹ In index: 1.
-#> Caused by error in `.f()`:
-#> ! No API key available. Specify key with "set_key()".
+#> Caused by error in `dplyr::bind_rows()`:
+#> ! Can't combine `..1$ZipCodes` <character> and `..224$ZipCodes` <list>.
 ```
 
 To get metadata for a subset of stations, simply pass a vector of 
@@ -107,15 +108,35 @@ with a particular zipcode (or spatial zipcode)
 
 ``` r
 cimis_zipcode()
-#> Error in `map()` at cimir/R/query.r:198:3:
-#> ℹ In index: 1.
-#> Caused by error in `.f()`:
-#> ! No API key available. Specify key with "set_key()".
+#> # A tibble: 1,526 × 5
+#>    StationNbr ZipCode ConnectDate DisconnectDate IsActive
+#>         <int> <chr>   <chr>       <chr>          <chr>   
+#>  1         99 90401   12/11/1992  5/8/2050       True    
+#>  2         99 90402   12/11/1992  5/8/2050       True    
+#>  3         99 90403   12/11/1992  5/8/2050       True    
+#>  4         99 90404   12/11/1992  5/8/2050       True    
+#>  5         99 90405   12/11/1992  5/8/2050       True    
+#>  6         99 90406   12/11/1992  5/8/2050       True    
+#>  7         99 90407   12/11/1992  5/8/2050       True    
+#>  8         99 90408   12/11/1992  5/8/2050       True    
+#>  9         99 90409   12/11/1992  5/8/2050       True    
+#> 10         99 90410   12/11/1992  5/8/2050       True    
+#> # ℹ 1,516 more rows
 cimis_spatial_zipcode()
-#> Error in `map()` at cimir/R/query.r:181:3:
-#> ℹ In index: 1.
-#> Caused by error in `.f()`:
-#> ! No API key available. Specify key with "set_key()".
+#> # A tibble: 1,715 × 4
+#>    ZipCode ConnectDate DisconnectDate IsActive
+#>    <chr>   <chr>       <chr>          <chr>   
+#>  1 85328   2/20/2003   12/31/2030     True    
+#>  2 85334   2/20/2003   12/31/2030     True    
+#>  3 85344   2/20/2003   12/31/2030     True    
+#>  4 85364   2/20/2003   12/31/2030     True    
+#>  5 85365   2/20/2003   12/31/2030     True    
+#>  6 86440   2/20/2003   12/31/2030     True    
+#>  7 89003   2/20/2003   12/31/2030     True    
+#>  8 89010   2/20/2003   12/31/2030     True    
+#>  9 89013   2/20/2003   12/31/2030     True    
+#> 10 89019   2/20/2003   12/31/2030     True    
+#> # ℹ 1,705 more rows
 ```
 
 Once the stations or regions of interest are identified, 
@@ -124,8 +145,14 @@ you can retrieve data using `cimis_data()`:
 
 ``` r
 cimis_data(targets = 170, start.date = "2018-09-25", end.date = "2018-10-01")
-#> Error in `basic_query()`:
-#> ! No API key available. Specify key with "set_key()".
+#> Error:
+#> ! CIMIS query failed with status HTTP/1.1 400 Bad Request
+#> https://tools.ietf.org/html/rfc9110#section-15.5.1
+#> One or more validation errors occurred.
+#> 400
+#> Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+#> 00-58a597d158645da60a8d0d19b8040dd7-026e0a92c313aa46-01
+#> URL request: https://et.water.ca.gov/StationWeb/GetDataByStationNumber?stationNbrs=170&startDate=2018-09-25&endDate=2018-10-01&dataItems=day-asce-eto,day-precip,day-sol-rad-avg,day-vap-pres-avg,day-air-tmp-max,day-air-tmp-min,day-air-tmp-avg,day-rel-hum-max,day-rel-hum-min,day-rel-hum-avg,day-dew-pnt,day-wind-spd-avg,day-wind-run,day-soil-tmp-avg&isHourly=false&unitOfMeasure=E&prioritizeSCS=Y
 ```
 
 The data are returned in tidy format, i.e. the `"Value"` column 
@@ -151,8 +178,10 @@ the daily values are assumed to correspond to midnight (00:00).
 ``` r
 cimis_to_datetime(cimis_data(targets = 170, start.date = "2018-09-25",
   end.date = "2018-09-27", items = c("hly-soil-tmp", "day-air-tmp-avg")))
-#> Error in `basic_query()`:
-#> ! No API key available. Specify key with "set_key()".
+#> Error:
+#> ! CIMIS query failed with status HTTP/1.1 404 Not Found
+#> [ERR1035-DATA ITEM NOT FOUND] Invalid data item: 'hly-soil-tmp'. See API documentation for a list of valid data items.
+#> URL request: https://et.water.ca.gov/StationWeb/GetDataByStationNumber?stationNbrs=170&startDate=2018-09-25&endDate=2018-09-27&dataItems=hly-soil-tmp,day-air-tmp-avg&isHourly=false&unitOfMeasure=E&prioritizeSCS=Y
 ```
 
 CIMIS data sometimes includes quality control flags in the `Qc` column that

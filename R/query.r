@@ -148,9 +148,9 @@ cimis_data = function(targets, start.date, end.date, items,hourly.data = FALSE,
 #'   cimis_zipcode()
 #'   cimis_spatial_zipcode()
 #' }
-#' @importFrom purrr map map_dfr
+#' @importFrom purrr map list_rbind
 #' @importFrom glue glue
-#' @importFrom dplyr as_tibble bind_rows
+#' @importFrom dplyr as_tibble
 #' @export
 cimis_station = function(station) {
   if (missing(station)) {
@@ -159,7 +159,15 @@ cimis_station = function(station) {
     url = glue("{base.url}/StationWeb/GetStationByStationNumber?stationNbr={station}")
   }
   result = map(url, basic_query)
-  map_dfr(result, function(s) map_dfr(s$Stations, as_tibble))
+
+  # This no longer works
+  # map_dfr(result, function(s) map_dfr(s$Stations, as_tibble))
+
+  result[[1]]$Stations |>
+    map(\(x) map(x, \(v) if (is.character(v) && length(v) > 1) paste(v, collapse = ",") else v)) |>
+    map(\(x) map(x, function(lst_elem) if (is.list(lst_elem)) unlist(lst_elem) %||% "" else lst_elem)) |>
+    map(as_tibble) |>
+    list_rbind()
 }
 
 

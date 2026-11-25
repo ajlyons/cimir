@@ -16,6 +16,8 @@ Fixed broken ROxygen links in the documentation
 
 `cimis_data()`: Changed the `prioritizeSCS` URL parameter in the legacy API to [`prefer`](https://cimis.water.ca.gov/web-api/rest-api/latest). No change to the function arguments.
 
+`cimis_station()`: Fixed the JSON flattening expression to work with the new CIMIS API
+
 # cimir 0.4-1 (2021-02-17)
 
 This patch provides better handling of queries
